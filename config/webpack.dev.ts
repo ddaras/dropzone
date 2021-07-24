@@ -42,9 +42,9 @@ const config: IConfiguration = {
 			'@src': PATHS.src,
 			'@root': PATHS.root,
 			'@assets': PATHS.assets,
-			'@utilities': PATHS.utilities,
+			'@utils': PATHS.utils,
 			'@components': PATHS.components,
-			'@containers': PATHS.containers
+			'@pages': PATHS.pages
 			// "react-dom": "@hot-loader/react-dom",
 		},
 		extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],

@@ -6,9 +6,9 @@
 			"@src/*": ["src/*"],
 			"@root/*": ["/*"],
 			"@assets/*": ["src/assets/*"],
-			"@utilities/*": ["src/utilities/*"],
+			"@utils/*": ["src/utils/*"],
 			"@components/*": ["src/components/*"],
-			"@containers/*": ["src/containers/*"]
+			"@pages/*": ["src/pages/*"]
 		},
 		"strict": true,
 		"target": "es5",

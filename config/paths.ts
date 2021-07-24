@@ -7,9 +7,9 @@ export const PATHS: Record<string, string> = {
 	root: resolve('./'),
 	dist: resolve('./dist'),
 	assets: resolve('./src/assets'),
-	utilities: resolve('./src/utilities'),
+	utils: resolve('./src/utils'),
 	components: resolve('./src/components'),
-	containers: resolve('./src/containers'),
+	pages: resolve('./src/pages'),
 	nodeModules: resolve('./node_modules'),
 	env: resolve('./.env'),
 	envDevelopment: resolve('./.env.development')

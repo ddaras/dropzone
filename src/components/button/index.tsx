@@ -1,6 +1,8 @@
 import * as React from 'react';
 import classNames from 'classnames';
 
+import Loader from '../loader';
+
 import { ButtonStyled } from './button-styled';
 
 export interface IProps {
@@ -8,23 +10,33 @@ export interface IProps {
 	children?: React.ReactNode;
 	onClick?: (e: React.SyntheticEvent) => void;
 	primary?: boolean;
+	loading?: boolean;
+	block?: boolean;
+	small?: boolean;
 }
 
 const Button: React.FC<IProps> = ({
 	type = 'button',
 	children,
-	onClick,
-	primary = false
+	primary = false,
+	loading,
+	block,
+	small,
+	...rest
 }) => {
 	return (
 		<ButtonStyled
 			className={classNames({
-				primary
+				primary,
+				loading,
+				block,
+				small
 			})}
 			type={type}
-			onClick={onClick}
+			disabled={loading}
+			{...rest}
 		>
-			{children}
+			{loading ? <Loader inline /> : children}
 		</ButtonStyled>
 	);
 };

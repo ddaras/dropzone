@@ -23,7 +23,6 @@ export const MenuItemStyled = styled.li<IMenuItemProps>(({ theme }) => ({
 	border: 0,
 	textAlign: 'left',
 	backgroundColor: 'transparent',
-	cursor: 'pointer',
 	textDecoration: 'none',
 	outlineOffset: '-3px',
 	display: 'flex',
@@ -34,6 +33,10 @@ export const MenuItemStyled = styled.li<IMenuItemProps>(({ theme }) => ({
 	':hover': {
 		backgroundColor: theme.color.accent.bgHover,
 		color: theme.color.core.neutral[6]
+	},
+
+	'&.clickable': {
+		cursor: 'pointer'
 	},
 
 	// variants

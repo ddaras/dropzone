@@ -70,5 +70,6 @@ export default (fontFamily: string) =>
 		baseInverse: '#181818',
 		boxShadowColor: color.neutral[6],
 		color,
-		fontFamily
+		fontFamily,
+		borderRadius: 8
 	});

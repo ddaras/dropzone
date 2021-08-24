@@ -10,10 +10,11 @@ interface IAsyncPageProps {
 }
 
 export interface IRoute {
-	path?: string;
+	path: string;
 	exact?: boolean;
 	component: any; // main part of layout
 	layout?: any;
+	isPrivate: boolean;
 }
 
 export const AsyncPage: any = loadable(
@@ -28,7 +29,8 @@ export const routes: IRoute[] = [
 		component: (props: RouteComponentProps) => (
 			<AsyncPage page="home" {...props} />
 		),
-		layout: TwoColumnLayout
+		layout: TwoColumnLayout,
+		isPrivate: true
 	},
 	{
 		path: '/login',
@@ -36,7 +38,8 @@ export const routes: IRoute[] = [
 		component: (props: RouteComponentProps) => (
 			<AsyncPage page="login" {...props} />
 		),
-		layout: OneColumnLayout
+		layout: OneColumnLayout,
+		isPrivate: false
 	}
 ];
 

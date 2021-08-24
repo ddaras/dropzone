@@ -28,5 +28,21 @@ export const ButtonStyled = styled.button<IProps>(({ theme }) => ({
 			backgroundColor: theme.color.core.primary[4],
 			borderColor: theme.color.core.primary[4]
 		}
+	},
+
+	'&.block': {
+		display: 'block',
+		width: '100%',
+		whiteSpace: 'normal',
+		overflow: 'hidden'
+	},
+
+	'&.loading': {
+		opacity: 0.6
+	},
+
+	'&.small': {
+		...theme.pattern.smallButton,
+		minWidth: 6 * theme.unit
 	}
 }));

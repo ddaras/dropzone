@@ -14,13 +14,22 @@ export interface IProps {
 	active?: boolean;
 }
 
-const MenuItem: React.FC<IProps> = ({ children, active, ...rest }) => {
+const MenuItem: React.FC<IProps> = ({
+	children,
+	active,
+	to,
+	onClick,
+	...rest
+}) => {
 	return (
 		<MenuItemStyled
-			as={Link}
+			as={to || onClick ? Link : 'li'}
 			className={classNames({
-				active
+				active,
+				clickable: onClick !== undefined
 			})}
+			to={to}
+			onClick={onClick}
 			{...rest}
 		>
 			{children}

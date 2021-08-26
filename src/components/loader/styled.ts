@@ -27,6 +27,11 @@ export const LoaderStyled = styled.div(
 
 		'&.inline': {
 			display: 'inline-block'
+		},
+
+		'&.small': {
+			width: '18px',
+			height: '18px'
 		}
 	}),
 	css`

@@ -5,16 +5,18 @@ import { LoaderStyled } from './styled';
 
 export interface LoaderProps {
 	inline?: boolean;
+	small?: boolean;
 }
 
-const Text: React.FC<LoaderProps> = ({ inline }) => {
+const Loader: React.FC<LoaderProps> = ({ inline, small }) => {
 	return (
 		<LoaderStyled
 			className={classNames({
-				inline
+				inline,
+				small
 			})}
 		></LoaderStyled>
 	);
 };
 
-export default Text;
+export default Loader;

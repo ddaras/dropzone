@@ -3,8 +3,12 @@ import * as React from 'react';
 import Text from '../text';
 import Col from '../col';
 import Row from '../row';
+import List from '../list';
+import ListItem from '../list/item';
 import Button from '../button';
 import Divider from '../divider';
+import Slider from '../slider';
+import IconImage from '../icon/image';
 
 import useTheme from '../../hooks/useTheme';
 
@@ -22,8 +26,12 @@ const Drop: React.FC<DropProps> = ({
 	data = [],
 	renderItem = () => {},
 	onDrop,
-	placeholder = 'Drop files here'
+	placeholder = 'Drag & drop images'
 }) => {
+	const [compressionRateValue, setCompressionRateValue] = React.useState<
+		number | undefined
+	>(90);
+
 	const [entered, setEntered] = React.useState<boolean>(false);
 	const fileRef = React.useRef<HTMLInputElement | null>(null);
 	const theme = useTheme();
@@ -54,9 +62,11 @@ const Drop: React.FC<DropProps> = ({
 			}}
 			style={{
 				backgroundColor: entered ? theme.color.core.neutral[1] : undefined,
-				border: `1px dashed ${theme.color.core.neutral[3]}`,
-				borderRadius: theme.ui.borderRadius,
-				padding: theme.unit
+				border: entered
+					? `1px dashed ${theme.color.core.neutral[3]}`
+					: '1px solid transparent',
+				borderRadius: theme.ui.borderRadius
+				// padding: theme.unit
 			}}
 		>
 			<input
@@ -67,40 +77,36 @@ const Drop: React.FC<DropProps> = ({
 				style={{ display: 'none' }}
 			/>
 
-			{data.length > 0 && (
-				<Row middleAlign>{data.map(item => renderItem(item))}</Row>
-			)}
+			<List horizontal gutter middleAlign>
+				{data.length > 0 && data.map(item => renderItem(item))}
 
-			{!data.length ? (
-				<div
-					style={{
-						opacity: entered ? 0 : 1,
-						transition: `opacity ${theme.ui.transitionTime}`
-					}}
-				>
-					<Col centered padded>
-						<Text title3>{placeholder}</Text>
-						<Text>or</Text>
-						{/* <Divider hidden /> */}
-						<Button
-							primary
-							onClick={() => fileRef.current && fileRef.current.click()}
-						>
-							Click to select
-						</Button>
-					</Col>
-				</div>
-			) : (
-				<Col centered padded>
-					<Button
-						small
-						primary
-						onClick={() => fileRef.current && fileRef.current.click()}
+				<ListItem>
+					<div
+						style={{
+							border: !entered
+								? `1px dashed ${theme.color.core.neutral[3]}`
+								: '1px solid transparent',
+							borderRadius: theme.ui.borderRadius
+						}}
 					>
-						Add files
-					</Button>
-				</Col>
-			)}
+						<Button onClick={() => fileRef.current && fileRef.current.click()}>
+							<Col centered padded>
+								<IconImage size="2em" color="#929292" />
+								<Text>{placeholder}</Text>
+							</Col>
+						</Button>
+					</div>
+
+					<Divider hidden />
+
+					<Text>Compression Rate</Text>
+
+					<Slider
+						value={compressionRateValue}
+						onChange={setCompressionRateValue}
+					/>
+				</ListItem>
+			</List>
 		</div>
 	);
 };

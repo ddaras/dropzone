@@ -36,7 +36,7 @@ const Button: React.FC<IProps> = ({
 			disabled={loading}
 			{...rest}
 		>
-			{loading ? <Loader inline /> : children}
+			{loading ? <Loader inline small /> : children}
 		</ButtonStyled>
 	);
 };

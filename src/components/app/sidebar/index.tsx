@@ -27,13 +27,13 @@ const AppSidebar: React.FC<IProps> = ({}) => {
 				<MenuItem to="/" active={location.pathname === '/'}>
 					Home
 				</MenuItem>
-				<MenuItem to="/login" active={location.pathname === '/login'}>
+				{/* <MenuItem to="/login" active={location.pathname === '/login'}>
 					Login
 				</MenuItem>
 				<MenuItem to="/orders" active={location.pathname === '/orders'}>
 					Orders
 				</MenuItem>
-				<MenuItem>Categories</MenuItem>
+				<MenuItem>Categories</MenuItem> */}
 				<MenuItem
 					onClick={() => {
 						handleLogout();

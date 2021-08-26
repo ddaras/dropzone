@@ -19,7 +19,11 @@ const renderApp = (Application: any) => {
 	);
 };
 
-renderApp(App);
+const renderSimpleApp = (Application: any) => {
+	render(<Application />, document.getElementById('root'));
+};
+
+renderSimpleApp(App);
 
 if (process.env.NODE_ENV === 'development') {
 	if (module.hot) {

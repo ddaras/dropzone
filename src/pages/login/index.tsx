@@ -8,7 +8,7 @@ import Card from '../../components/card';
 import Button from '../../components/button';
 import Col from '../../components/col';
 
-import useApi from '../../hooks/useApi';
+import useFakeApi from '../../hooks/useFakeApi';
 import useMe from '../../hooks/useMe';
 
 import SING_IN from '../../graphql/signIn';
@@ -19,7 +19,7 @@ interface SignInProps {
 }
 
 const Login = ({ history }: RouteComponentProps) => {
-	const { call: mutateSignIn, loading } = useApi(SING_IN);
+	const { call: mutateSignIn, loading } = useFakeApi(SING_IN);
 	const { login } = useMe();
 
 	const handleLogin = async ({
@@ -53,6 +53,11 @@ const Login = ({ history }: RouteComponentProps) => {
 		// isSignedIn: true
 	});
 
+	const fakeSignIn = () => {
+		login('fake-token-bla-bla-bla');
+		history.push('/');
+	};
+
 	return (
 		<div>
 			<div style={{ width: 440, margin: '4rem auto' }}>
@@ -62,7 +67,7 @@ const Login = ({ history }: RouteComponentProps) => {
 							<Text title1>Login</Text>
 						</FormField>
 						<FormField>
-							<Button primary block onClick={signIn} loading={loading}>
+							<Button primary block onClick={fakeSignIn} loading={loading}>
 								Continue with Google
 							</Button>
 						</FormField>

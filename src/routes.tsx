@@ -30,7 +30,8 @@ export const routes: IRoute[] = [
 			<AsyncPage page="home" {...props} />
 		),
 		layout: TwoColumnLayout,
-		isPrivate: true
+		// isPrivate: true
+		isPrivate: false
 	},
 	{
 		path: '/login',
